@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Omniauth::MultipleProviders::VERSION
   spec.authors       = ["Takuya Kato"]
   spec.email         = ["info@takuya.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Support omniauth for multiple provider}
+  spec.summary       = %q{Support omniauth for multiple provider}
   spec.homepage      = ""
   spec.license       = "MIT"
 
