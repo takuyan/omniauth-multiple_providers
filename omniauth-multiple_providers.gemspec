@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["info@takuya.com"]
   spec.description   = %q{Support omniauth for multiple provider}
   spec.summary       = %q{Support omniauth for multiple provider}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/takuyan/omniauth-multiple_providers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
