@@ -48,12 +48,18 @@ module Omniauth
           if up = ProviderUser.find_by(uid: auth['uid'], provider: auth['provider'])
             up.user
           else
-            nil
+            # Hmmm...
+            # FIXME to be configuratable
+            # Do this If you trust provider email
+            if user = User.find_by(email: auth['email'])
+              user
+            else
+              nil
+            end
           end
         end
 
         def create_by_oauth(auth)
-          logger.debug "##### Auth Hash: #{auth.to_json}"
           case auth['provider']
           when 'twitter'
             # Twitter not give me email from api
