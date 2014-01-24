@@ -1,5 +1,7 @@
 module Omniauth
   class MultipleProvidersController < ApplicationController
+
+    # PATH: new_omniauth_path(provider: 'twitter')
     def new
       if %w[twitter github google_oauth2 facebook].include?(params[:provider])
         redirect_to "/auth/#{params[:provider]}"
@@ -13,7 +15,7 @@ module Omniauth
       if @user.new_record?
         redirect_to new_user_session_path, flash: {error: "ユーザデータの保存に失敗しました：#{@user.errors.full_messages.join(', ')}"}
       elsif @user.email.blank?
-        redirect_to prepare_path
+        redirect_to new_user_registration_path(@user)
       else
         sign_in(@user)
         redirect_to root_path, notice: 'OK'
@@ -24,6 +26,7 @@ module Omniauth
       redirect_to root_path, flash: {error: 'OAuth認証に失敗しました'}
     end
 
+    # PATH: omniauth_path('twitter'), method: :delete
     def destroy
       if up = current_user.provider_users.find_by(provider: params[:id])
         up.destroy
