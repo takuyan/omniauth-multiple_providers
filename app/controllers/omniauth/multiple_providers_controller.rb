@@ -18,7 +18,7 @@ module Omniauth
         redirect_to new_user_registration_path(@user)
       else
         sign_in(@user)
-        redirect_to root_path, notice: 'OK'
+        redirect_to after_sign_in_path_for(:user), notice: 'OK'
       end
     end
 
